@@ -9,9 +9,9 @@ catch (PDOException $e) {
     die(print_r($e));
 }
 
-$sql = "SELECT TOP (15) * FROM dbo.iotwqmstable ORDER BY received_at DESC"; //Seleccion ultimo valor
+$sql = "SELECT TOP (5) * FROM dbo.iotwqmstable ORDER BY received_at DESC"; //Seleccion ultimo valor
 //$sql = "SELECT Temperatura, Turbidez, device_id, received_at FROM dbo.iotwqmstable ORDER BY received_at"; // Seleccion todos los valores
 foreach ($conn->query($sql) as $row) {
-    echo "\n Temperatura: " . $row["Temperatura"]. " - Turbidez: " . $row["Turbidez"]. " - Dispositivo: " . $row["device_id"]. "- Fecha: ".$row["received_at"]. "<br>";
+    echo $row["Temperatura"].$row["Turbidez"].$row["device_id"].$row["received_at"]. ",";
 }
 ?>
